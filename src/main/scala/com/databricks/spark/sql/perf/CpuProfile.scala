@@ -27,8 +27,6 @@ import scala.sys.process._
 
 import org.apache.hadoop.fs.{FileSystem, Path}
 
-import com.twitter.jvm.CpuProfile
-
 /**
  * A collection of utilities for parsing stacktraces that have been recorded in JSON and generating visualizations
  * on where time is being spent.
@@ -107,12 +105,12 @@ package object cpu {
         case Row(stackLines: Seq[String], count: Long) => stackLines.map(toStackElement) -> count :: Nil
         case other => println(s"Failed to parse $other"); Nil
       }.toMap
-      val profile = new com.twitter.jvm.CpuProfile(counts, com.twitter.util.Duration.fromSeconds(10), cpuLogs.count().toInt, 0)
+      //val profile = new com.twitter.jvm.CpuProfile(counts, com.twitter.util.Duration.fromSeconds(10), cpuLogs.count().toInt, 0)
 
       val outfile = File.createTempFile("cpu", "profile")
       val svgFile = File.createTempFile("cpu", "svg")
 
-      profile.writeGoogleProfile(new FileOutputStream(outfile))
+      //profile.writeGoogleProfile(new FileOutputStream(outfile))
 
       println(run(
         "cp /dbfs/home/michael/pprof ./",

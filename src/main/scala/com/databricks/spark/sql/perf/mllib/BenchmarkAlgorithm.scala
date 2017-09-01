@@ -1,12 +1,11 @@
 package com.databricks.spark.sql.perf.mllib
 
-import com.typesafe.scalalogging.slf4j.{LazyLogging => Logging}
-
 import org.apache.spark.ml.attribute.{NominalAttribute, NumericAttribute}
 import org.apache.spark.ml.{Estimator, PipelineStage, Transformer}
 import org.apache.spark.ml.evaluation.Evaluator
 import org.apache.spark.sql._
 import org.apache.spark.sql.functions._
+import com.typesafe.scalalogging.{LazyLogging => Logging}
 
 /**
  * The description of a benchmark for an ML algorithm. It follows a simple, standard proceduce:
